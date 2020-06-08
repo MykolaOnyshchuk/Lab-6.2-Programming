@@ -9,14 +9,14 @@ void Hospital::fill_patiens(){
 }
 
 void Hospital::print_statitic(int month){
-	std::cout << "Ìåñÿö " << month << std::endl;
+	std::cout << "ÐœÐµÑÑÑ† " << month << std::endl;
 	if (therapist.all_are_healhy()) {
 		std::cout << "ALL ARE HEALTHY" << std::endl;
 		return;
 	}
-	std::cout << "\nÑòàòèñòèêà áîëåçíåé:\n\n";
+	std::cout << "\nÐ¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð±Ð¾Ð»ÐµÐ·Ð½ÐµÐ¹:\n\n";
 	get_diseases_info();
-	std::cout << "Ñòàòèñòèêà ïî ïàöèåíòàì:\n\n";
+	std::cout << "Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð¿Ð¾ Ð¿Ð°Ñ†Ð¸ÐµÐ½Ñ‚Ð°Ð¼:\n\n";
 	get_patients_info();
 }
 
@@ -29,7 +29,7 @@ Hospital::Hospital(int days, int patients_num){
 void Hospital::start_simulation(){
 	for (auto i = 1; i <= days_for_procesing; ++i) {
 		therapist.make_daily_check();
-		// Ñòàòèñòèêó ï³äáèâàºìî ËÈØÅ â ê³íö³ ì³ñÿöÿ (ÿê íàïèñàíî â óìîâ³)
+		// Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑƒ Ð¿Ñ–Ð´Ð±Ð¸Ð²Ð°Ñ”Ð¼Ð¾ Ð›Ð˜Ð¨Ð• Ð² ÐºÑ–Ð½Ñ†Ñ– Ð¼Ñ–ÑÑÑ†Ñ (ÑÐº Ð½Ð°Ð¿Ð¸ÑÐ°Ð½Ð¾ Ð² ÑƒÐ¼Ð¾Ð²Ñ–)
 		if (i % 30 == 0) {
 			print_statitic(i / 30);
 			therapist.update_statistic();
