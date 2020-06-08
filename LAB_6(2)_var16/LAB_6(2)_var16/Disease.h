@@ -4,16 +4,16 @@
 
 class Disease{
 private:
-	string patient_disease; // Назва хвороби
-	static int get_match_with(string, vector<string>); // Хвороба для перевірки, симптоми хворого
+	string patient_disease; // РќР°Р·РІР° С…РІРѕСЂРѕР±Рё
+	static int get_match_with(string, vector<string>); // РҐРІРѕСЂРѕР±Р° РґР»СЏ РїРµСЂРµРІС–СЂРєРё, СЃРёРјРїС‚РѕРјРё С…РІРѕСЂРѕРіРѕ
 
 public:
 	Disease();
-	void set_patient_disease(string disease); // Втавновлює значення хвороби
-	string get_string_disease(); // Геттер для назви хвороби
+	void set_patient_disease(string disease); // Р’С‚Р°РІРЅРѕРІР»СЋС” Р·РЅР°С‡РµРЅРЅСЏ С…РІРѕСЂРѕР±Рё
+	string get_string_disease(); // Р“РµС‚С‚РµСЂ РґР»СЏ РЅР°Р·РІРё С…РІРѕСЂРѕР±Рё
 
-	static string get_random_symptom(); // Повертає випадковий симтом із усіх можливиx
-	static string detect_desease(vector<string>);  // Симптоми хворого
-	static int get_disease_index(string); // Повертає індекс хвороби у списку
+	static string get_random_symptom(); // РџРѕРІРµСЂС‚Р°С” РІРёРїР°РґРєРѕРІРёР№ СЃРёРјС‚РѕРј С–Р· СѓСЃС–С… РјРѕР¶Р»РёРІРёx
+	static string detect_desease(vector<string>);  // РЎРёРјРїС‚РѕРјРё С…РІРѕСЂРѕРіРѕ
+	static int get_disease_index(string); // РџРѕРІРµСЂС‚Р°С” С–РЅРґРµРєСЃ С…РІРѕСЂРѕР±Рё Сѓ СЃРїРёСЃРєСѓ
 };
 
