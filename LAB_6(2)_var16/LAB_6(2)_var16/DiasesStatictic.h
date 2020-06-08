@@ -1,7 +1,7 @@
 #pragma once
 #include "DiseaseConst.h"
 
-// Структура для щомісячної статистики
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С‰РѕРјС–СЃСЏС‡РЅРѕС— СЃС‚Р°С‚РёСЃС‚РёРєРё
 struct DiseaseStatictic {
 	string disease_name;
 	int patients_number;
@@ -12,7 +12,7 @@ struct DiseaseStatictic {
 	}
 	
 	string get_info() {
-		return "Заболевание: " + disease_name +
-			   "\nЗаболело за месяц: " + std::to_string(patients_number);
+		return "Р—Р°Р±РѕР»РµРІР°РЅРёРµ: " + disease_name +
+			   "\nР—Р°Р±РѕР»РµР»Рѕ Р·Р° РјРµСЃСЏС†: " + std::to_string(patients_number);
 	}
 };
