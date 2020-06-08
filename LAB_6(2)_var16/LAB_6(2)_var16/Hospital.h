@@ -7,12 +7,12 @@ private:
 	int patients_number;
 	int days_for_procesing;
 
-	void fill_patiens(); // Додає випадкових пацієнтів щомісяца
-	void print_statitic(int); // Виводить щомісячну статистику хвороб та список пацієнтів
-	void get_patients_info(); // Виводить інформацію про пацієнтів
-	void get_diseases_info(); // Виводить статистику хвороб
+	void fill_patiens(); // Р”РѕРґР°С” РІРёРїР°РґРєРѕРІРёС… РїР°С†С–С”РЅС‚С–РІ С‰РѕРјС–СЃСЏС†Р°
+	void print_statitic(int); // Р’РёРІРѕРґРёС‚СЊ С‰РѕРјС–СЃСЏС‡РЅСѓ СЃС‚Р°С‚РёСЃС‚РёРєСѓ С…РІРѕСЂРѕР± С‚Р° СЃРїРёСЃРѕРє РїР°С†С–С”РЅС‚С–РІ
+	void get_patients_info(); // Р’РёРІРѕРґРёС‚СЊ С–РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ РїР°С†С–С”РЅС‚С–РІ
+	void get_diseases_info(); // Р’РёРІРѕРґРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ С…РІРѕСЂРѕР±
 public:
 	Hospital(int, int);
-	void start_simulation(); // Розпочинає симуляцію
+	void start_simulation(); // Р РѕР·РїРѕС‡РёРЅР°С” СЃРёРјСѓР»СЏС†С–СЋ
 };
 
