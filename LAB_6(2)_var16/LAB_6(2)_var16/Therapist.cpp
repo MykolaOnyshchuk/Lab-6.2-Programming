@@ -1,13 +1,13 @@
 #include "Therapist.h"
 
 void Therapist::check_patient(int index){
-	// Перевіряємо, чи повністю здоровий і шанс
-	// рецедиву мінімальний
+	// РџРµСЂРµРІС–СЂСЏС”РјРѕ, С‡Рё РїРѕРІРЅС–СЃС‚СЋ Р·РґРѕСЂРѕРІРёР№ С– С€Р°РЅСЃ
+	// СЂРµС†РµРґРёРІСѓ РјС–РЅС–РјР°Р»СЊРЅРёР№
 	if (recovery_chance[index] > 0.95) {
 		patients[index].make_health();
 	}
 	else {
-		// Інакше продовжуємо лікування, але збільшуємо шанс вилікуватися
+		// Р†РЅР°РєС€Рµ РїСЂРѕРґРѕРІР¶СѓС”РјРѕ Р»С–РєСѓРІР°РЅРЅСЏ, Р°Р»Рµ Р·Р±С–Р»СЊС€СѓС”РјРѕ С€Р°РЅСЃ РІРёР»С–РєСѓРІР°С‚РёСЃСЏ
 		auto treatment_time = patients[index].get_treatment_time();
 		patients[index].set_treatment_time(rand() % MAXIMAL_TREAMENT_TIME / 2 + 1);
 		recovery_chance[index] += 0.25;
@@ -24,7 +24,7 @@ Therapist::Therapist(){
 void Therapist::examine(Patient& patient){
 	string potential_disease = UNKNOWN_DISEASE;
 
-	while (potential_disease == UNKNOWN_DISEASE) { // Уточнюємо симптоми (відправляємо на аналізи)
+	while (potential_disease == UNKNOWN_DISEASE) { // РЈС‚РѕС‡РЅСЋС”РјРѕ СЃРёРјРїС‚РѕРјРё (РІС–РґРїСЂР°РІР»СЏС”РјРѕ РЅР° Р°РЅР°Р»С–Р·Рё)
 		patient.clarify_symptoms();
 		potential_disease = Disease::detect_desease(patient.get_symptoms());
 	}
@@ -34,8 +34,8 @@ void Therapist::examine(Patient& patient){
 }
 
 void Therapist::set_treatment_plan(Patient& patient){
-	// Встановлюємо план лікування та ШАНС вилікуватися за цей
-	// період часу (це необхідно для симуляції повторного обстеження)
+	// Р’СЃС‚Р°РЅРѕРІР»СЋС”РјРѕ РїР»Р°РЅ Р»С–РєСѓРІР°РЅРЅСЏ С‚Р° РЁРђРќРЎ РІРёР»С–РєСѓРІР°С‚РёСЃСЏ Р·Р° С†РµР№
+	// РїРµСЂС–РѕРґ С‡Р°СЃСѓ (С†Рµ РЅРµРѕР±С…С–РґРЅРѕ РґР»СЏ СЃРёРјСѓР»СЏС†С–С— РїРѕРІС‚РѕСЂРЅРѕРіРѕ РѕР±СЃС‚РµР¶РµРЅРЅСЏ)
 	patient.set_treatment_time(rand() % MAXIMAL_TREAMENT_TIME + 1);
 	patients.add(patient);
 	auto health_chance = (float)rand() / RAND_MAX + 0.5;
@@ -43,8 +43,8 @@ void Therapist::set_treatment_plan(Patient& patient){
 }
 
 void Therapist::make_daily_check(){
-	// Проходимо по всіх пацієнтах і зменшуємо час лікування
-	// на один день. Перевіряємо, чи готовий пацієнт покинути лікарню
+	// РџСЂРѕС…РѕРґРёРјРѕ РїРѕ РІСЃС–С… РїР°С†С–С”РЅС‚Р°С… С– Р·РјРµРЅС€СѓС”РјРѕ С‡Р°СЃ Р»С–РєСѓРІР°РЅРЅСЏ
+	// РЅР° РѕРґРёРЅ РґРµРЅСЊ. РџРµСЂРµРІС–СЂСЏС”РјРѕ, С‡Рё РіРѕС‚РѕРІРёР№ РїР°С†С–С”РЅС‚ РїРѕРєРёРЅСѓС‚Рё Р»С–РєР°СЂРЅСЋ
 	for (auto i = 0; i < patients.size(); ++i) {
 		patients[i].decrease_treatment_time();
 		if (patients[i].get_treatment_time() == 0)
@@ -60,7 +60,7 @@ void Therapist::get_patients_info(){
 
 TemplateCollection<DiseaseStatictic>& Therapist::get_diseases_info(){
 	TemplateCollection<DiseaseStatictic> statistic;
-	// Формуємо список-звіт по хворобам, якого вимагає умова завдання
+	// Р¤РѕСЂРјСѓС”РјРѕ СЃРїРёСЃРѕРє-Р·РІС–С‚ РїРѕ С…РІРѕСЂРѕР±Р°Рј, СЏРєРѕРіРѕ РІРёРјР°РіР°С” СѓРјРѕРІР° Р·Р°РІРґР°РЅРЅСЏ
 	for (auto i = 0; i < DISEASES_NUMBER; i++) {
 		statistic.add(DiseaseStatictic(all_diseases[i], patients_by_disease[i]));
 	}
@@ -68,18 +68,18 @@ TemplateCollection<DiseaseStatictic>& Therapist::get_diseases_info(){
 }
 
 void Therapist::update_statistic(){
-	// Очищуємо статистику за попередній місяць
+	// РћС‡РёС‰СѓС”РјРѕ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РїРѕРїРµСЂРµРґРЅС–Р№ РјС–СЃСЏС†СЊ
 	for (auto i = 0; i < DISEASES_NUMBER; ++i)
 		patients_by_disease[i] = 0;
-	// Зберігаємо пацієнтів, які ще не вилікувалися
+	// Р—Р±РµСЂС–РіР°С”РјРѕ РїР°С†С–С”РЅС‚С–РІ, СЏРєС– С‰Рµ РЅРµ РІРёР»С–РєСѓРІР°Р»РёСЃСЏ
 	auto temp = TemplateCollection<Patient>();
 	for (auto i = 0; i < patients.size(); ++i) {
 		if (patients[i].get_treatment_time() != -1) {
 			temp.add(patients[i]);
 		}
 	}
-	// Видаляємо всіх пацієнтів, але додаємо назад тих, 
-	// якиx зберегли, в той же час заповнюємо статистику
+	// Р’РёРґР°Р»СЏС”РјРѕ РІСЃС–С… РїР°С†С–С”РЅС‚С–РІ, Р°Р»Рµ РґРѕРґР°С”РјРѕ РЅР°Р·Р°Рґ С‚РёС…, 
+	// СЏРєРёx Р·Р±РµСЂРµРіР»Рё, РІ С‚РѕР№ Р¶Рµ С‡Р°СЃ Р·Р°РїРѕРІРЅСЋС”РјРѕ СЃС‚Р°С‚РёСЃС‚РёРєСѓ
 	patients.clear();
 	patients = TemplateCollection<Patient>();
 	for (auto i = 0; i < temp.size(); ++i) {
@@ -92,3 +92,4 @@ void Therapist::update_statistic(){
 bool Therapist::all_are_healhy(){
 	return patients.size() == 0;
 }
+
