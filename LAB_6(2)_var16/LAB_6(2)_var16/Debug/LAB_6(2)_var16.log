@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (LAB_6(2)_var16.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Disease.cpp
+  Hospital.cpp
+  main.cpp
+  Patient.cpp
+E:\LAB_6(2)_var16\LAB_6(2)_var16\main.cpp(18,12): warning C4244:  аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Therapist.cpp
+  Создание кода...
+E:\LAB_6(2)_var16\LAB_6(2)_var16\Patient.cpp(10,21): warning C4018:  <: несоответствие типов со знаком и без знака
+E:\LAB_6(2)_var16\LAB_6(2)_var16\Therapist.cpp(67): warning C4172:  возвращение адреса локальной или временной переменной : statistic
+  LAB_6(2)_var16.vcxproj -> E:\LAB_6(2)_var16\Debug\Lab6.2Var16.exe
