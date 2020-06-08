@@ -2,7 +2,7 @@
 
 int Disease::get_match_with(string disease, vector<string> patient_symptoms){
 	int match = 0;
-	// Перевіряємо число збігів по симптомам з даною хворобою
+	// РџРµСЂРµРІС–СЂСЏС”РјРѕ С‡РёСЃР»Рѕ Р·Р±С–РіС–РІ РїРѕ СЃРёРјРїС‚РѕРјР°Рј Р· РґР°РЅРѕСЋ С…РІРѕСЂРѕР±РѕСЋ
 	for (auto& symptom : patient_symptoms) {
 		if (std::find(diagnosis[disease].begin(), diagnosis[disease].end(), symptom) != diagnosis[disease].end())
 			++match;
@@ -29,10 +29,10 @@ string Disease::detect_desease(vector<string> patient_symptoms){
 
 	for (auto i = 0; i < DISEASES_NUMBER; ++i) {
 		matches[i] = get_match_with(all_diseases[i], patient_symptoms);
-		if (matches[i] == SYMPTOMS_BY_DISEASE) return all_diseases[i]; // Якщо повністю співпало
+		if (matches[i] == SYMPTOMS_BY_DISEASE) return all_diseases[i]; // РЇРєС‰Рѕ РїРѕРІРЅС–СЃС‚СЋ СЃРїС–РІРїР°Р»Рѕ
 		maximal_index = (matches[i] > matches[maximal_index]) ? i : maximal_index;
 	}
-	// Максимальний збіг лише по одній хворобі і збіг більше, як по одному симптому
+	// РњР°РєСЃРёРјР°Р»СЊРЅРёР№ Р·Р±С–Рі Р»РёС€Рµ РїРѕ РѕРґРЅС–Р№ С…РІРѕСЂРѕР±С– С– Р·Р±С–Рі Р±С–Р»СЊС€Рµ, СЏРє РїРѕ РѕРґРЅРѕРјСѓ СЃРёРјРїС‚РѕРјСѓ
 	int frequence = std::count(std::begin(matches), std::end(matches), matches[maximal_index]);
 	return (matches[maximal_index] > 1 && frequence == 1) ? all_diseases[maximal_index] : UNKNOWN_DISEASE;
 }
