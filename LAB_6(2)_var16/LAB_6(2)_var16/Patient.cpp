@@ -11,9 +11,9 @@ string Patient::get_info(){
 		symptoms_info += symptoms[i];
 		symptoms_info += (i != symptoms.size() - 1) ? ", " : "";
 	}
-	return "Информация о пациенте:\nСимптомы: " + symptoms_info +
-		"\nЗаболевание: " + disease.get_string_disease() +
-		"\nОсталось лечится (дней): " + std::to_string(std::max(treatment_time, 0));
+	return "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїР°С†РёРµРЅС‚Рµ:\nРЎРёРјРїС‚РѕРјС‹: " + symptoms_info +
+		"\nР—Р°Р±РѕР»РµРІР°РЅРёРµ: " + disease.get_string_disease() +
+		"\nРћСЃС‚Р°Р»РѕСЃСЊ Р»РµС‡РёС‚СЃСЏ (РґРЅРµР№): " + std::to_string(std::max(treatment_time, 0));
 }
 
 Disease& Patient::get_disease()
@@ -30,7 +30,7 @@ void Patient::set_treatment_time(int _treatment_time){
 }
 
 void Patient::make_health(){
-	treatment_time = -1; // Сигнал, що пацієнт уже НЕ в лікарні
+	treatment_time = -1; // РЎРёРіРЅР°Р», С‰Рѕ РїР°С†С–С”РЅС‚ СѓР¶Рµ РќР• РІ Р»С–РєР°СЂРЅС–
 }
 
 void Patient::decrease_treatment_time(){
@@ -49,12 +49,10 @@ vector<string> Patient::get_symptoms(){
 
 void Patient::clarify_symptoms(){
 	string new_symptom = UNKNOWN_DISEASE;
-	// Перевіряємо, чи немає ВЖЕ такого симптому
-	// генеруємо, доки не отримаємо новий
+	// РџРµСЂРµРІС–СЂСЏС”РјРѕ, С‡Рё РЅРµРјР°С” Р’Р–Р• С‚Р°РєРѕРіРѕ СЃРёРјРїС‚РѕРјСѓ
+	// РіРµРЅРµСЂСѓС”РјРѕ, РґРѕРєРё РЅРµ РѕС‚СЂРёРјР°С”РјРѕ РЅРѕРІРёР№
 	do{
 		new_symptom = disease.get_random_symptom();
 	} while (std::find(symptoms.begin(), symptoms.end(), new_symptom) != symptoms.end());
 	symptoms.push_back(new_symptom);
 }
-
-
